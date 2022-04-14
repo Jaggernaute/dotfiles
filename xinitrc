@@ -32,10 +32,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xrandr –listproviders
+/usr/bin/prime-offload
+
+/usr/bin/prime-switch
+
+prime-select nvidia
+
+xrandr -listproviders
 
 export DESKTOP_SESSION=plasma
 
-setxkbmap fr &
+setxkbmap en &
 
 exec startplasma-x11

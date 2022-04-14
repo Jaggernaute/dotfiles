@@ -1,0 +1,11 @@
+[Favorites-org.kde.plasma.kicker.favorites.instance-24-e2178f58-f4e8-4747-b2ab-4b32164d92a0]
+ordering=applications:kitty.desktop,preferred://browser,applications:discord-canary.desktop,applications:jetbrains-clion.desktop,applications:jetbrains-toolbox.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,applications:org.flameshot.Flameshot.desktop
+
+[Favorites-org.kde.plasma.kicker.favorites.instance-24-global]
+ordering=applications:kitty.desktop,preferred://browser,applications:discord-canary.desktop,applications:jetbrains-clion.desktop,applications:jetbrains-toolbox.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,applications:org.flameshot.Flameshot.desktop
+
+[Favorites-org.kde.plasma.kickoff.favorites.instance-3-e2178f58-f4e8-4747-b2ab-4b32164d92a0]
+ordering=preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.discover.desktop
+
+[Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]
+ordering=preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.discover.desktop

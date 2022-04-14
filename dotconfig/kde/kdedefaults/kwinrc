@@ -1,11 +1,11 @@
 [TabBox]
-DesktopLayout=big_icons
-DesktopListLayout=big_icons
-LayoutName=big_icons
+DesktopLayout=org.kde.breeze.desktop
+DesktopListLayout=org.kde.breeze.desktop
+LayoutName=preview_stack
 
 [Windows]
-Placement=Smart
+Placement=Centered
 
 [org.kde.kdecoration2]
 library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Nordic-round
+theme=__aurorae__svg__MoeDark

@@ -1,0 +1,27 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[0e5c94b5-3fd6-4730-9925-c6455902e61c]
+Description=Settings for .*
+noborder=true
+noborderrule=2
+wmclass=.*
+
+[749dbd7b-c91e-40b5-acf4-f5d92a5b1ec5]
+Description=Settings for *
+noborderrule=5
+wmclass=*
+wmclasscomplete=true
+wmclassmatch=2
+
+[General]
+count=1
+rules=ca9d5f02-c98d-4148-99e1-b64bf6393533
+
+[ca9d5f02-c98d-4148-99e1-b64bf6393533]
+Description=Settings for .*
+noborder=true
+noborderrule=3
+wmclass=.*
+wmclasscomplete=true
+wmclassmatch=3

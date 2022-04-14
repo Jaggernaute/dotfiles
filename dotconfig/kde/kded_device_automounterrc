@@ -1,0 +1,27 @@
+[Devices][/org/freedesktop/UDisks2/block_devices/dm_2d0]
+EverMounted=true
+Icon=drive-harddisk-root
+LastNameSeen=100.0 GiB Internal Drive (dm-0)
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/dm_2d1]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=365.3 GiB Internal Drive (dm-1)
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/dm_2d2]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=69.0 GiB Internal Drive (dm-2)
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/dm_2d3]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=862.5 GiB Internal Drive (dm-3)
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/nvme0n1p1]
+Icon=drive-harddisk
+LastNameSeen=500.0 MiB Internal Drive (nvme0n1p1)
