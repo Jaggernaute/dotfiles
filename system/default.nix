@@ -1,14 +1,17 @@
-{ hostname }:
-{ config, pkgs, ... }:
+{ username, hostname, pkgs, ... }:
 {
   imports =
     [
-      ./issue
       ./polkit.nix
     ];
 
   boot = {
-    consoleLogLevel = 3;
+    consoleLogLevel = 0;
+    initrd = {
+      verbose = false;
+      kernelModules = [ "amdgpu" ];
+    };
+
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -37,19 +40,16 @@
 
   environment.pathsToLink = [ "/share/nix-direnv" ];
   nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      (_: super: {
-        nix-direnv = super.nix-direnv.override {
-          enableFlakes = true;
-        };
-      })
-    ];
+    config = {
+      allowUnfree = true;
+      pulseaudio = true;
+    };
   };
 
   networking = {
-    hostName = "${hostname}";
+    hostName = hostname;
     networkmanager.enable = true;
+    firewall.enable = false;
   };
 
   time.timeZone = "Europe/Paris";
@@ -58,30 +58,33 @@
   console = {
     earlySetup = true;
     useXkbConfig = true;
-    font = "Lat2-Terminus16";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     colors = [
-      "0e0e18" # Black
-      "d22942" # red
-      "17b67c" # green
-      "f2a174" # yellow
-      "8c8af1" # blue
-      "d78af1" # magenta
-      "8adef1" # cyan
-      "c9d3f9" # white
+      "11111E" # Black
+      "E12541" # red
+      "14C67B" # green
+      "FFAC7D" # yellow
+      "7270FF" # blue
+      "FD8DFF" # magenta
+      "75DFED" # cyan
+      "A4B1E3" # white
 
-      "1a1c31" # light black
-      "de4259" # light red
-      "3fd7a0" # light green
-      "eed49f" # light yellow
-      "a7a5fb" # light blue
-      "e5a5fb" # light magenta
-      "a5ebfb" # light cyan
-      "cad3f5" # light white
+      "474B77" # light black
+      "DE6876" # light red
+      "63D961" # light green
+      "FFDA8D" # light yellow
+      "AAA9FA" # light blue
+      "E5A5FB" # light magenta
+      "BEEDF8" # light cyan
+      "DBE2FB" # light white
     ];
   };
 
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    opengl.enable = true;
+  };
 
   programs = {
     command-not-found.enable = false;
@@ -106,6 +109,21 @@
 
   security.rtkit.enable = true;
   services = {
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
@@ -124,7 +142,6 @@
 
     xserver = {
       enable = true;
-      excludePackages = with pkgs; [ xterm ];
       displayManager.startx.enable = true;
       layout = "fr";
       libinput = {
@@ -135,24 +152,25 @@
       windowManager.qtile = {
         enable = true;
         backend = "x11";
-        extraPackages = python3Packages: with python3Packages; [
-          qtile-extras
-        ];
       };
     };
 
     upower.enable = true;
   };
 
-  users.users.sigmanificient = {
+  users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
+    extraGroups = [ "audio" "docker" "networkmanager" "libvirtd" "wheel" ];
     initialPassword = "hello";
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  fonts.packages = with pkgs; let
+    jetbrains-mono-nerd-font = (nerdfonts.override
+      { fonts = [ "JetBrainsMono" ]; });
+  in
+  [
+    jetbrains-mono-nerd-font
     dina-font
     fira-code
     fira-code-symbols
@@ -162,6 +180,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     proggyfonts
+    apl386
   ];
 
   virtualisation = {
@@ -171,6 +190,7 @@
 
   documentation.dev.enable = true;
   environment = {
+    etc.issue.text = (builtins.readFile ./issuerc);
     sessionVariables = {
       MOZ_USE_XINPUT2 = "1";
       XDG_CACHE_HOME = "$HOME/.cache";
@@ -179,13 +199,14 @@
       XDG_STATE_HOME = "$HOME/.local/state";
     };
 
-    shells = with pkgs; [ zsh ];
+    shells = [ pkgs.zsh ];
     systemPackages = with pkgs; [
       alsa-utils
       modemmanager
       networkmanagerapplet
       libsForQt5.ark
       libsForQt5.plasma-nm
+      playerctl
 
       git
       htop
@@ -211,13 +232,11 @@
   };
 
   qt.style = "adwaita-dark";
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    extraPortals = [
+      pkgs.xdg-desktop-portal-kde
+    ];
   };
 }

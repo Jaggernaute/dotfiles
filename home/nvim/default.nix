@@ -1,39 +1,43 @@
-{ pkgs, ecsls, conf, ... }:
-let
-  base_pkgs = with pkgs; [
-    nil # Nix
-    lua-language-server
-    nodePackages.pyright
-    clang-tools
-    llvmPackages_latest.clang
-    nodejs # Copilot
-    xclip # Clipboard fix
-  ];
-
-  extra_pkgs =
-    if conf.ecsls.enable
-    then base_pkgs ++ [ ecsls.packages.${conf.system}.default ]
-    else base_pkgs;
-in
+{ pkgs, ecsls, ehcsls, system, ... }:
 {
-  home.file.nvim_conf = {
-    source = ./lua;
-    target = ".config/nvim/lua";
-    recursive = true;
+  home.file = {
+    nvim_conf = {
+      source = ./lua;
+      target = ".config/nvim/lua";
+      recursive = true;
+    };
+
+    clang_tidy = {
+      source = ./.clang-tidy;
+      target = ".clang-tidy";
+    };
+
+    clangd = {
+      source = ./.clangd;
+      target = ".clangd";
+    };
   };
 
   programs.neovim = {
     enable = true;
 
-    extraConfig = ''
-      lua require('sigma')
-    '';
+    extraConfig = (builtins.readFile ./.vimrc);
+    plugins = [ pkgs.vimPlugins.lazy-nvim ];
 
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
+    extraPackages = with pkgs; let
+      ecsls-pkg = ecsls.packages.${system}.default;
+      ehcsls-pkg = ehcsls.packages.${system}.default;
+    in
+    [
+      nil
+      lua-language-server
+      nodePackages.pyright
+      clang-tools
+      llvmPackages_latest.clang
+      nodejs
+      xclip
+      ecsls-pkg
+      ehcsls-pkg
     ];
-
-    extraPackages = extra_pkgs;
   };
 }
-

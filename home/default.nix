@@ -1,16 +1,17 @@
-{ pkgs, conf, ecsls, qtile, ... }:
+{ pkgs, username, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    (import ./nvim { inherit ecsls pkgs conf; })
-    (import ./qtile { inherit qtile; })
+    ./nvim
 
+    ./bash
     ./btop
     ./neofetch
     ./picom
     ./dunst
     ./firefox
+    ./qtile
     ./thunar
     ./tmux
     ./zsh
@@ -25,56 +26,57 @@
   ];
 
   home = {
-    username = "${conf.username}";
-    homeDirectory = "/home/${conf.username}";
+    inherit username;
+    homeDirectory = "/home/${username}";
 
     stateVersion = "22.11";
     sessionVariables = {
       EDITOR = pkgs.nano;
     };
 
-    packages = with pkgs; [
-      # settings
-      arandr
-      brightnessctl
-      lxappearance
+    packages =
+      let
+        figma-linux-wrap = with pkgs; figma-linux.overrideAttrs (prev: {
+          nativeBuildInputs = prev.nativeBuildInputs ++ [ wrapGAppsHook ];
+        });
 
-      # volume
-      pamixer
-      pulsemixer
-      pavucontrol
+      in
+      with pkgs; [
+        # settings
+        arandr
+        brightnessctl
+        lxappearance
 
-      # messaging
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
+        figma-linux-wrap
 
-      teams
-      tdesktop
+        # volume
+        pamixer
+        pulsemixer
+        pavucontrol
 
-      # dev
-      gnumake
-      tokei
-      wakatime
+        # messaging
+        discord
+        teams-for-linux
 
-      # misc
-      spotify
-      gimp
-      neofetch
-      obsidian
-      pass
+        # dev
+        gnumake
+        tokei
+        wakatime
 
-      # utils
-      jgmenu
-      peek
-      ripgrep
-      dconf
-    ];
+        # misc
+        spotify
+        gimp
+        neofetch
+        pass
+
+        # utils
+        peek
+        ripgrep
+        dconf
+      ];
   };
 
   programs = {
-    bash = import ./bash { };
     home-manager.enable = true;
 
     bat = {
