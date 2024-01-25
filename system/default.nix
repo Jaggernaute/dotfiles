@@ -109,21 +109,6 @@
 
   security.rtkit.enable = true;
   services = {
-    auto-cpufreq = {
-      enable = true;
-      settings = {
-        battery = {
-          governor = "powersave";
-          turbo = "never";
-        };
-
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-      };
-    };
-
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
@@ -143,7 +128,7 @@
     xserver = {
       enable = true;
       displayManager.startx.enable = true;
-      layout = "fr";
+      layout = "us";
       libinput = {
         enable = true;
         mouse.accelProfile = "flat";
@@ -214,6 +199,8 @@
       vim
       vifm
       wget
+
+      floorp
 
       libnotify
       virt-manager

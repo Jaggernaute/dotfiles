@@ -1,6 +1,6 @@
 { inputs, system }: with inputs;
 let
-  username = "sigmanificient";
+  username = "jaggi";
 in
 {
   inherit system;
@@ -18,7 +18,7 @@ in
           useUserPackages = true;
           users.${username} = import ./home;
           extraSpecialArgs = {
-            inherit username system ecsls ehcsls;
+            inherit username system;
           };
         };
       };
@@ -28,7 +28,6 @@ in
       };
 
       mod-nixhardware-lst = with nixos-hardware.nixosModules; [
-        asus-battery
         common-pc-laptop
         common-cpu-amd
         common-pc-ssd
