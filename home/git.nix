@@ -2,8 +2,8 @@
 {
   programs.git = {
     enable = true;
-    userName = "Sigmanificient";
-    userEmail = "edhyjox" + "@" + "gmail.com";
+    userName = "Jaggernaute";
+    userEmail = "lucas.videcoq1" + "@" + "gmail.com";
 
     extraConfig.url = {
       init = {

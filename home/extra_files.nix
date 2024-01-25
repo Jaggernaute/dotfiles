@@ -7,8 +7,9 @@
     };
 
     wallpaper = {
-      source = ./../assets/wallpaper.png;
-      target = "assets/wallpaper.png";
+      source = ./../assets;
+      target = "assets";
+      recursive = true;
     };
   };
 }

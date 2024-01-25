@@ -1,43 +1,36 @@
-{ pkgs, ecsls, ehcsls, system, ... }:
-{
-  home.file = {
-    nvim_conf = {
-      source = ./lua;
-      target = ".config/nvim/lua";
-      recursive = true;
+{ pkgs, system, ... }:
+
+let
+  nvchad = pkgs.stdenv.mkDerivation {
+    pname = "nvchad";
+    version = "1.0.0";
+    dontBuild = true;
+
+    src = pkgs.fetchFromGitHub {
+      owner = "NvChad";
+      repo = "NvChad";
+      rev = "c8777040fbda6a656f149877b796d120085cd918";
+      sha256 = "sha256-J4SGwo/XkKFXvq+Va1EEBm8YOQwIPPGWH3JqCGpFnxY=";
     };
 
-    clang_tidy = {
-      source = ./.clang-tidy;
-      target = ".clang-tidy";
-    };
+    installPhase = ''
+      runHook preInstall
 
-    clangd = {
-      source = ./.clangd;
-      target = ".clangd";
-    };
+      mkdir $out
+
+      cp -aR $src/* $out/
+
+      chmod +w $out/lua
+      cp -r ${./custom} $out/lua/custom
+
+      runHook postInstall
+    '';
   };
+in
+{
+  programs.neovim.enable = true;
 
-  programs.neovim = {
-    enable = true;
-
-    extraConfig = (builtins.readFile ./.vimrc);
-    plugins = [ pkgs.vimPlugins.lazy-nvim ];
-
-    extraPackages = with pkgs; let
-      ecsls-pkg = ecsls.packages.${system}.default;
-      ehcsls-pkg = ehcsls.packages.${system}.default;
-    in
-    [
-      nil
-      lua-language-server
-      nodePackages.pyright
-      clang-tools
-      llvmPackages_latest.clang
-      nodejs
-      xclip
-      ecsls-pkg
-      ehcsls-pkg
-    ];
+  xdg.configFile."nvim/" = {
+    source = nvchad;
   };
 }

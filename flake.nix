@@ -4,9 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-    ecsls.url = "github:Sigmapitech/ecsls";
-    ehcsls.url = "github:Sigmapitech/ehcsls";
-
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
