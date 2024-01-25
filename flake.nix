@@ -1,5 +1,5 @@
 {
-  description = "Sigma dotfiles";
+  description = "Jaggi dotfiles";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
@@ -24,6 +24,8 @@
       nixosConfigurations = {
         Bacon = nixpkgs.lib.nixosSystem
           (import ./bacon.nix { inherit inputs system; });
+        Toaster = nixpkgs.lib.nixosSystem
+          (import ./toaster.nix { inherit inputs system; });
       };
     };
 }
