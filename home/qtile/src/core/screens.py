@@ -1,5 +1,6 @@
 import pathlib
 import os
+import random
 
 from libqtile.bar import Gap
 from libqtile.config import Screen
@@ -10,10 +11,10 @@ gap = Gap(4)
 
 _cwd = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 
-wallpaper_path = os.path.expanduser("~/assets/wallpaper.png")
+wallpaper_path = os.path.expanduser(f"~/assets/wall-{random.randint(1,19):02d}.png")
 
 if not os.path.exists(wallpaper_path):
-    wallpaper_path = str((_cwd / ".." / ".." / "wallpaper.png").absolute())
+    wallpaper_path = str((_cwd / ".." / ".." / "wall-19.png").absolute())
 
 screens = [
     Screen(

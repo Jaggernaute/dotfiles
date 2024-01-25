@@ -9,9 +9,4 @@
     source = ./betterlockscreenrc;
     target = ".config/betterlockscreenrc";
   };
-
-  home.file.lockscreen = {
-    source = ./../../assets/lockscreen.png;
-    target = "assets/lockscreen.png";
-  };
 }

@@ -68,6 +68,7 @@
         gimp
         neofetch
         pass
+        prismlauncher
 
         # utils
         peek
