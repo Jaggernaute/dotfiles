@@ -41,7 +41,7 @@
       dodo = "shutdown now";
       lz = "lazygit";
       ufda = "echo 'use flake' | tee .envrc && direnv allow";
-      logisim = "_JAVA_AWT_WT_NONPARENTING=1 logisim-evolution";
+      logisim = "_JAVA_AWT_WM_NONREPARENTING=1 logisim-evolution & disown";
     };
 
     oh-my-zsh = {
