@@ -1,22 +1,24 @@
-{ pkgs, username, ... }:
+{ pkgs, username, nix-doom-emacs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./nvim
+    nix-doom-emacs.hmModule
 
     ./bash
+    ./betterlockscreen
     ./btop
-    ./neofetch
-    ./picom
     ./dunst
+    ./emacs
     ./firefox
+    ./neofetch
+    ./nvim
+    ./picom
     ./qtile
     ./thunar
     ./tmux
     ./zsh
 
-    ./betterlockscreen
     ./cursor.nix
     ./extra_files.nix
     ./flameshot.nix
@@ -63,6 +65,9 @@
         tokei
         wakatime
         (pkgs.callPackage ./logisim.nix {})
+        jetbrains.idea-ultimate
+        quartus-prime-lite
+        emacsPackages.doom
 
         # misc
         spotify
