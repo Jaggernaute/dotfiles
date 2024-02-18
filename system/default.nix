@@ -141,6 +141,8 @@
     };
 
     upower.enable = true;
+
+    udev.packages = [ pkgs.usb-blaster-udev-rules ];
   };
 
   users.users.${username} = {
@@ -192,6 +194,7 @@
       libsForQt5.ark
       libsForQt5.plasma-nm
       playerctl
+      libudev0-shim
 
       git
       htop
