@@ -42,6 +42,8 @@
           nativeBuildInputs = prev.nativeBuildInputs ++ [ wrapGAppsHook ];
         });
 
+        discord-patched = pkgs.discord.override {withVencord = true;};
+
       in
       with pkgs; [
         # settings
@@ -57,8 +59,8 @@
         pavucontrol
 
         # messaging
-        discord
         teams-for-linux
+        discord-patched
 
         # dev
         gnumake
