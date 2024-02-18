@@ -1,11 +1,9 @@
-{pkgs}: let
-  inherit (pkgs) stdenv fetchurl jre8;
-in
-  stdenv.mkDerivation {
+{pkgs, ...}:
+  pkgs.stdenv.mkDerivation {
     pname = "logisim-evolution";
     version = "2023";
 
-    src = fetchurl {
+    src = pkgs.fetchurl {
       url = "http://www.irisa.fr/cosi/HOMEPAGE/Derrien/logisim/logisim-evolution.jar";
       sha256 = "sha256-24uXyTXhxxA1uwc787I+OJn+ZmqMgNIL9RE3zoRrWww=";
     };
@@ -18,7 +16,7 @@ in
       runHook preInstall
 
       mkdir -p $out/bin
-      makeWrapper ${jre8}/bin/java $out/bin/logisim-evolution \
+      makeWrapper ${pkgs.jre8}/bin/java $out/bin/logisim-evolution \
         --add-flags "-jar $src"                               \
         --set _JAVA_AWT_WM_NONREPARENTING 1
 
