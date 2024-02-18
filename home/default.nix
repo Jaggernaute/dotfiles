@@ -23,7 +23,6 @@
     ./git.nix
     ./gtk.nix
     ./kitty.nix
-    ./logisim.nix
   ];
 
   home = {
@@ -63,7 +62,7 @@
         gnumake
         tokei
         wakatime
-        logisim-evolution
+        (pkgs.callPackage ./logisim.nix {})
 
         # misc
         spotify
