@@ -42,7 +42,7 @@
           nativeBuildInputs = prev.nativeBuildInputs ++ [ wrapGAppsHook ];
         });
 
-        discord-patched = pkgs.discord.override {withVencord = true;};
+        discord-patched = pkgs.discord.override {withVencord = false;};
 
       in
       with pkgs; [
@@ -61,6 +61,8 @@
         # messaging
         teams-for-linux
         discord-patched
+        thunderbird
+        telegram-desktop
 
         # dev
         gnumake
@@ -70,6 +72,7 @@
         jetbrains.idea-ultimate
         quartus-prime-lite
         emacsPackages.doom
+        kicad
 
         # misc
         spotify
@@ -77,6 +80,7 @@
         neofetch
         pass
         prismlauncher
+        steam
 
         # utils
         peek
