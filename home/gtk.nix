@@ -23,13 +23,8 @@
     };
 
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "macchiato";
-      };
+      name = "Dracula";
+      package = pkgs.dracula-theme;
     };
   };
 
