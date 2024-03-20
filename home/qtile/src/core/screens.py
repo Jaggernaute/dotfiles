@@ -11,10 +11,10 @@ gap = Gap(4)
 
 _cwd = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 
-wallpaper_path = os.path.expanduser(f"~/assets/wall-{random.randint(1,19):02d}.png")
+wallpaper_path = os.path.expanduser(f"~/assets/wall-{random.randint(21,22):02d}.png")
 
 if not os.path.exists(wallpaper_path):
-    wallpaper_path = str((_cwd / ".." / ".." / "wall-19.png").absolute())
+    wallpaper_path = str((_cwd / ".." / ".." / "wall-22.png").absolute())
 
 screens = [
     Screen(
