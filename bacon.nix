@@ -1,4 +1,4 @@
-{ inputs, system }: with inputs;
+{ inputs, system, unstable }: with inputs;
 let
   username = "jaggi";
 in
@@ -18,7 +18,7 @@ in
           useUserPackages = true;
           users.${username} = import ./home;
           extraSpecialArgs = {
-            inherit username system nix-doom-emacs;
+            inherit username unstable system nix-doom-emacs spicetify-nix;
           };
         };
       };
