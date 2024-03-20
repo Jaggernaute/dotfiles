@@ -1,4 +1,4 @@
-{ pkgs, username, nix-doom-emacs, ... }:
+{ pkgs, username, unstable, nix-doom-emacs, spicetify-nix, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -42,7 +42,7 @@
           nativeBuildInputs = prev.nativeBuildInputs ++ [ wrapGAppsHook ];
         });
 
-        discord-patched = pkgs.discord.override {withVencord = false;};
+        discord-patched = unstable.discord.override { withVencord = true; };
 
       in
       with pkgs; [
@@ -65,17 +65,21 @@
         telegram-desktop
 
         # dev
+        clang-tools
+        llvmPackages_latest.clang
         gnumake
         tokei
         wakatime
-        (pkgs.callPackage ./logisim.nix {})
+        (pkgs.callPackage ./logisim.nix { })
         jetbrains.idea-ultimate
+        jetbrains.pycharm-professional
         quartus-prime-lite
         emacsPackages.doom
         kicad
 
         # misc
         spotify
+        spicetify-cli
         gimp
         neofetch
         pass
@@ -86,6 +90,7 @@
         peek
         ripgrep
         dconf
+        xclip
       ];
   };
 
