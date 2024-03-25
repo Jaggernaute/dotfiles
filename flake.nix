@@ -36,7 +36,7 @@
         Bacon = nixpkgs.lib.nixosSystem
           (import ./bacon.nix { inherit inputs system unstable; });
         Toaster = nixpkgs.lib.nixosSystem
-          (import ./toaster.nix { inherit inputs system; });
+          (import ./toaster.nix { inherit inputs system unstable; });
       };
     };
 }
