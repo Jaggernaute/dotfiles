@@ -9,7 +9,6 @@
     NoDefaultBookmarks = true;
     OfferToSaveLogins = false;
     OfferToSaveLoginsDefault = false;
-    PasswordManagerEnabled = false;
 
     FirefoxHome = {
       Search = false;
