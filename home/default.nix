@@ -116,6 +116,10 @@
       settings.git.commit = {
         signOff = true;
       };
+      settings.gui = {
+        nerdFontsVersion = "3";
+      };
+      settings.overrideGpg = true;
     };
   };
 }
