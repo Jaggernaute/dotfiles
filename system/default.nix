@@ -170,11 +170,6 @@
     apl386
   ];
 
-  virtualisation = {
-    docker.enable = true;
-    libvirtd.enable = true;
-  };
-
   documentation.dev.enable = true;
   environment = {
     etc.issue.text = (builtins.readFile ./issuerc);
