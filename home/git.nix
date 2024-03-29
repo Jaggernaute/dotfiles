@@ -14,9 +14,13 @@
         insteadOf = "https://github.com/";
       };
 
-      # Sign all commits using ssh key
-      commit.gpgsign = true;
-    };
+      # Sign all commits using gpg key
+      signing = {
+        key = "4A007644AB9ABE27";
+        signByDefault = true;
+      };
+  };
+
 
     ignores = [
       # C commons
