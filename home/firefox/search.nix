@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   force = true;
-  default = "DuckDuckGo";
+  default = "Google";
   engines = {
     "Nix Packages" = {
       urls = [{
@@ -17,6 +17,5 @@
     };
 
     "Bing".metaData.hidden = true;
-    "Google".metaData.alias = "@g";
   };
 }
