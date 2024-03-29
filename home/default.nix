@@ -111,6 +111,11 @@
     };
 
     feh.enable = true;
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings.git.commit = {
+        signOff = true;
+      };
+    };
   };
 }
