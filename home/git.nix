@@ -15,7 +15,6 @@
       };
 
       # Sign all commits using gpg key
-      commit.gpgsign = true;
       signing = {
         key = "4A007644AB9ABE27";
         signByDefault = true;
