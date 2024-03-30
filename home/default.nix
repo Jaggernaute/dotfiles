@@ -42,7 +42,9 @@
           nativeBuildInputs = prev.nativeBuildInputs ++ [ wrapGAppsHook ];
         });
 
-        discord-patched = unstable.discord.override { withVencord = true; };
+        discord-patched = unstable.discord.override {
+          withVencord = true;
+        };
 
       in
       with pkgs; [
