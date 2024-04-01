@@ -35,3 +35,5 @@ class Color(AlphaColor):
     TEXT_INACTIVE = _Color("#292C39")
     TEXT_DARK = _Color("#A2B1E8")
     TEXT_LIGHT = _Color("#CAD3F5")
+
+    PINK_UWU = _Color("#fd0a5a")
