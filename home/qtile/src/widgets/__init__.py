@@ -1,6 +1,5 @@
 from .defaults import widget_defaults
 from .overides import (
-    Battery,
     Clock,
     CPUGraph,
     GroupBox,
@@ -9,15 +8,13 @@ from .overides import (
     QuickExit,
     Separator,
     TaskList,
-    Systray
+    Systray,
 )
 
 from .spotify import SpotifyNowPlaying
-from .wakatime import Wakatime
 
 __all__ = (
     "widget_defaults",
-    "Battery",
     "Clock",
     "CPUGraph",
     "GroupBox",
@@ -28,5 +25,4 @@ __all__ = (
     "SpotifyNowPlaying",
     "TaskList",
     "Systray",
-    "Wakatime",
 )

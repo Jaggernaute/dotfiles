@@ -4,7 +4,6 @@ from libqtile import bar, widget
 
 from utils import Color
 from widgets import (
-    Battery,
     Clock,
     CPUGraph,
     GroupBox,
@@ -15,7 +14,6 @@ from widgets import (
     SpotifyNowPlaying,
     Systray,
     TaskList,
-    Wakatime,
 )
 
 
@@ -31,8 +29,6 @@ class Bar(bar.Bar):
         Separator,
         Prompt,
         SpotifyNowPlaying,
-        Wakatime,
-        Battery,
         Memory,
         CPUGraph,
         Separator,

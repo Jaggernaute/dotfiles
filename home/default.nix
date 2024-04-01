@@ -75,9 +75,11 @@
         (pkgs.callPackage ./logisim.nix { })
         jetbrains.idea-ultimate
         jetbrains.pycharm-professional
+        jetbrains.clion
         quartus-prime-lite
         emacsPackages.doom
         kicad
+        jupyter
 
         # misc
         spotify
