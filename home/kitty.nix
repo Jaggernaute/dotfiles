@@ -25,35 +25,35 @@
       tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
 
       # colors
-      active_tab_foreground = "#0F0F1C";
-      active_tab_background = "#8B8AF1";
-      inactive_tab_foreground = "#B4C0EC";
+      active_tab_foreground = "#FFFFFF";
+      active_tab_background = "#FC0B5A";
+      inactive_tab_foreground = "#EE5396";
       inactive_tab_background = "#1A1C31";
       tab_bar_background = "#0F0F1C";
 
-      foreground = "#CAD3F5";
-      background = "#1A1C31";
+      foreground = "#FFFFFF";
+      background = "#161616";
       selection_foreground = "#000000";
-      selection_background = "#A7A5FB";
-      url_color = "#8B8AF1";
-      cursor = "#82E3F8";
+      selection_background = "#DDE1E6";
+      url_color = "#FC0B5A";
+      cursor = "#6F6F6F";
 
-      color0 = "#0F0F1C";
-      color1 = "#D22942";
-      color2 = "#17B67C";
-      color3 = "#F2A174";
-      color4 = "#8C8AF1";
-      color5 = "#D78AF1";
-      color6 = "#8ADEF1";
-      color7 = "#CAD3F5";
-      color8 = "#A2B1E8";
-      color9 = "#DE4259";
-      color10 = "#3FD7A0";
-      color11 = "#EED49F";
-      color12 = "#A7A5FB";
-      color13 = "#E5A5FB";
-      color14 = "#A5EBFB";
-      color15 = "#CAD3F5";
+      color0 = "#262626";
+      color1 = "#EE5396";
+      color2 = "#42BE65";
+      color3 = "#FFE97B";
+      color4 = "#33B1FF";
+      color5 = "#FF7EB6";
+      color6 = "#3DDBD9";
+      color7 = "#DDE1E6";
+      color8 = "#393939";
+      color9 = "#EE5396";
+      color10 = "#42BE65";
+      color11 = "#FFE97B";
+      color12 = "#33B1FF";
+      color13 = "#FF7EB6";
+      color14 = "#3DDBD9";
+      color15 = "#FFFFFF";
 
       # Other
       initial_window_width = 820;
