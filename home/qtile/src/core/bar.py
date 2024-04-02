@@ -47,5 +47,5 @@ class Bar(bar.Bar):
         widgets_copy = [widget_cls() for widget_cls in self._widgets]
 
         if self.id == 0:
-            widgets_copy.insert(13, Systray())
+            widgets_copy.insert(12, Systray())
         return widgets_copy
