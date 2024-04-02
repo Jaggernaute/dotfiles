@@ -18,10 +18,6 @@ from widgets import (
 
 
 class Bar(bar.Bar):
-    widgets_checks = {
-        Battery: lambda _: os.uname().nodename == "Bacon",
-    }
-
     _widgets = [
         GroupBox,
         Separator,
@@ -42,7 +38,7 @@ class Bar(bar.Bar):
         self.id = id_
 
         if self.id == 0:
-            self._widgets.insert(14, Systray)
+            self._widgets.insert(13, Systray)
 
         super().__init__(
             widgets=self._build_widgets(),
