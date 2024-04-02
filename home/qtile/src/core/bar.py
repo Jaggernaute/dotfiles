@@ -36,10 +36,6 @@ class Bar(bar.Bar):
 
     def __init__(self, id_):
         self.id = id_
-
-        if self.id == 0:
-            self._widgets.insert(13, Systray)
-
         super().__init__(
             widgets=self._build_widgets(),
             size=24,
@@ -48,8 +44,8 @@ class Bar(bar.Bar):
         )
 
     def _build_widgets(self):
-        return [
-            widget_builder()
-            for widget_builder in self._widgets
-            if self.widgets_checks.get(widget_builder, bool)(self)
-        ]
+        widgets_copy = [widget_cls() for widget_cls in self._widgets]
+
+        if self.id == 0:
+            widgets_copy.insert(13, Systray())
+        return widgets_copy
