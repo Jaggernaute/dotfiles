@@ -10,16 +10,6 @@ def mk_overrides(cls, **conf):
     init_method = partialmethod(cls.__init__, **conf)
     return type(cls.__name__, (cls,), {"__init__": init_method})
 
-
-Battery = mk_overrides(
-    widget.Battery,
-    format="⚡{percent:2.0%}",
-    background=Color.BG_DARK.with_alpha(0.7),
-    foreground=Color.TEXT_LIGHT,
-    low_background=Color.RED_DARK.with_alpha(0.7),
-    low_percentage=0.1,
-)
-
 CPUGraph = mk_overrides(
     widget.CPUGraph, type="line", line_width=1, border_width=0,
     graph_color=Color.PINK_UWU
