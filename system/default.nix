@@ -224,4 +224,9 @@
       pkgs.xdg-desktop-portal-kde
     ];
   };
+
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.cups-toshiba-estudio ];
+  };
 }
