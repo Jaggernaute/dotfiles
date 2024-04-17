@@ -26,7 +26,8 @@
   nix = {
     gc = {
       automatic = true;
-      options = "--delete-older-than 90d";
+hardware.pulseaudio.enable = true;
+  hardware.bluetooth.enable = true;      options = "--delete-older-than 90d";
     };
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -112,6 +113,7 @@
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
+    blueman.enable = true;
 
     picom = {
       enable = true;
