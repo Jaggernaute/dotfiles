@@ -19,7 +19,7 @@
         key = "4A007644AB9ABE27";
         signByDefault = true;
       };
-  };
+    };
 
 
     ignores = [

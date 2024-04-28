@@ -95,6 +95,7 @@
         ripgrep
         dconf
         xclip
+        lshw
       ];
   };
 
