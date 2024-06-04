@@ -1,4 +1,4 @@
-{ username, config, hostname, pkgs, ... }:
+{ username, config, hostname, pkgs, withNVIDIA, ... }:
 {
   imports =
     [
@@ -24,11 +24,6 @@
   };
 
   nix = {
-    gc = {
-      automatic = true;
-hardware.pulseaudio.enable = true;
-  hardware.bluetooth.enable = true;      options = "--delete-older-than 90d";
-    };
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "@wheel" ];
@@ -104,7 +99,7 @@ hardware.pulseaudio.enable = true;
       ];
     };
 
-    nvidia = {
+    nvidia = if withNVIDIA then {
       # Modesetting is required.
       modesetting.enable = true;
 
@@ -133,7 +128,7 @@ hardware.pulseaudio.enable = true;
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
+    } else {};
   };
 
   programs = {
@@ -177,9 +172,6 @@ hardware.pulseaudio.enable = true;
     };
 
     xserver = {
-      # config = (builtins.readFile ./xorg.conf);
-      dpi = 90;
-      videoDrivers = [ "nvidia" ];
       enable = true;
       displayManager.startx.enable = true;
       layout = "us";
@@ -192,8 +184,11 @@ hardware.pulseaudio.enable = true;
         enable = true;
         backend = "x11";
       };
-    };
-
+    } // (if withNVIDIA then {
+      # config = (builtins.readFile ./xorg.conf);
+      dpi = 90;
+      videoDrivers = [ "nvidia" ];
+    } else {});
     upower.enable = true;
 
     udev.packages = [ pkgs.usb-blaster-udev-rules ];

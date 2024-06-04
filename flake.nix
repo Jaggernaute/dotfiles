@@ -2,7 +2,7 @@
   description = "Jaggi dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hosts.url = "github:StevenBlack/hosts";
@@ -34,9 +34,10 @@
 
       nixosConfigurations = {
         Bacon = nixpkgs.lib.nixosSystem
-          (import ./bacon.nix { inherit inputs system unstable; });
+          (import ./bacon.nix { inherit inputs system unstable; withNVIDIA=true; });
         Toaster = nixpkgs.lib.nixosSystem
-          (import ./toaster.nix { inherit inputs system unstable; });
+          (import ./toaster.nix { inherit inputs system unstable;
+          withNVIDIA=false;});
       };
     };
 }
