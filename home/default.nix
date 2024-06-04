@@ -65,6 +65,7 @@
         discord-patched
         thunderbird
         telegram-desktop
+        matrix-commander
 
         # dev
         clang-tools
