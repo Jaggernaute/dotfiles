@@ -1,15 +1,12 @@
-{ pkgs, username, unstable, nix-doom-emacs, spicetify-nix, ... }:
+{ pkgs, username, unstable, spicetify-nix, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    nix-doom-emacs.hmModule
-
     ./bash
     ./betterlockscreen
     ./btop
     ./dunst
-    ./emacs
     ./firefox
     ./neofetch
     ./nvim
@@ -78,7 +75,6 @@
         jetbrains.pycharm-professional
         jetbrains.clion
         quartus-prime-lite
-        emacsPackages.doom
         kicad
         jupyter
 
