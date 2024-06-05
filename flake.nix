@@ -13,7 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 

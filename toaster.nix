@@ -6,7 +6,7 @@ in
   inherit system;
 
   specialArgs = {
-    inherit username;
+    inherit username withNVIDIA;
     hostname = "Toaster";
   };
 
@@ -18,7 +18,7 @@ in
           useUserPackages = true;
           users.${username} = import ./home;
           extraSpecialArgs = {
-            inherit username unstable system nix-doom-emacs withNVIDIA;
+            inherit username unstable system;
           };
         };
       };
