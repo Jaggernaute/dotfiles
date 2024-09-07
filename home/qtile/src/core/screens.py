@@ -9,10 +9,10 @@ from core.bar import Bar
 
 gap = Gap(4)
 _cwd = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
-wallpaper_path = os.path.expanduser(f"~/assets/wall-{random.randint(24,24):02d}.png")
+wallpaper_path = os.path.expanduser(f"~/assets/wall-{random.randint(25,25):02d}.png")
 
 if not os.path.exists(wallpaper_path):
-    wallpaper_path = str((_cwd / ".." / ".." / "wall-24.png").absolute())
+    wallpaper_path = str((_cwd / ".." / ".." / "wall-25.png").absolute())
 
 _gap = Gap(4)
 _screen_attr = dict(
