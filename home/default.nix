@@ -50,19 +50,14 @@
         brightnessctl
         lxappearance
 
-        figma-linux-wrap
-
         # volume
         pamixer
         pulsemixer
         pavucontrol
 
         # messaging
-        teams-for-linux
-        discord-patched
+        vesktop
         thunderbird
-        telegram-desktop
-        matrix-commander
 
         # dev
         clang-tools
@@ -71,16 +66,10 @@
         tokei
         wakatime
         (pkgs.callPackage ./logisim.nix { })
-        jetbrains.idea-ultimate
-        jetbrains.pycharm-professional
-        jetbrains.clion
         quartus-prime-lite
         kicad
-        jupyter
 
         # misc
-        spotify
-        spicetify-cli
         gimp
         neofetch
         pass
