@@ -58,6 +58,7 @@
         # messaging
         vesktop
         thunderbird
+        teams-for-linux
 
         # dev
         clang-tools
@@ -68,6 +69,8 @@
         (pkgs.callPackage ./logisim.nix { })
         quartus-prime-lite
         kicad
+        unstable.jetbrains.webstorm
+        unstable.jetbrains.idea-ultimate
 
         # misc
         gimp
